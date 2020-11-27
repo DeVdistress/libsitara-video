@@ -16,6 +16,9 @@ basic work with video on am572x processors of TI sitara family
 
 - **libGAL**
 
+## MAIN INFO TI CMEM
+- [TI CMEM](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_CMEM.html)
+
 ## MAIN INFO GC320 (2D Graphics Accelerator) on Sitara AM57x Processors
 - [Video GC320](https://training.ti.com/introduction-gc320-2d-graphics-accelerator-sitara-am57x-processors?context=519066-1138862-1138051)
 
