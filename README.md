@@ -15,6 +15,12 @@ basic work with video on am572x processors of TI sitara family
 - **libreadline**
 
 - **libGAL**
+  
+ ## MAIN INFO
+- [Processor SDK Linux](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/index.html)
+
+## MAIN INFO ABOUT KMS
+- [Kernel Mode Setting (KMS)](http://heim.ifi.uio.no/~knuto/kernel/4.14/gpu/drm-kms.html?highlight=kernel%20mode%20setting%20kms)
 
 ## MAIN INFO TI CMEM
 - [TI CMEM](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_CMEM.html)
@@ -38,9 +44,3 @@ basic work with video on am572x processors of TI sitara family
 - [Graphics Display Getting Started Guide](https://processors.wiki.ti.com/index.php/Graphics_Display_Getting_Started_Guide#kmscube)
 	
 	+ [**Simple utilities for KMS**](https://github.com/tomba/kmsxx)
-  
- ## MAIN INFO
-- [Processor SDK Linux](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/index.html)
-
-## MAIN INFO ABOUT KMS
-- [Kernel Mode Setting (KMS)](http://heim.ifi.uio.no/~knuto/kernel/4.14/gpu/drm-kms.html?highlight=kernel%20mode%20setting%20kms)
