@@ -18,7 +18,5 @@ libdrm libdrm_omap libfmt libticmem libpthread libreadline libGAL
  ## MAIN INFO
 - [Processor SDK Linux](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/index.html)
 
-- [Video Analytics example](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Examples_and_Demos/Application_Demos/Video_Analytics.html)
-
 ## MAIN INFO ABOUT KMS
 - [Kernel Mode Setting (KMS)](http://heim.ifi.uio.no/~knuto/kernel/4.14/gpu/drm-kms.html?highlight=kernel%20mode%20setting%20kms)
