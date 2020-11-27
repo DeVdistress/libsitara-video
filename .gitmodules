@@ -1,0 +1,3 @@
+[submodule "ext/VideoEncoding"]
+	path = ext/VideoEncoding
+	url = https://github.com/DimusSM/VideoEncoding
