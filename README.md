@@ -2,19 +2,19 @@
 basic work with video on am572x processors of TI sitara family
 
 ## dependence
-**libdrm
+- **libdrm**
 
-**libdrm_omap
+- **libdrm_omap**
 
-**libfmt
+- **libfmt**
 
-**libticmem
+- **libticmem**
 
-**libpthread
+- **libpthread**
 
-**libreadline
+- **libreadline**
 
-**libGAL
+- **libGAL**
 
 ## MAIN INFO GC320 (2D Graphics Accelerator) on Sitara AM57x Processors
 - [Video GC320](https://training.ti.com/introduction-gc320-2d-graphics-accelerator-sitara-am57x-processors?context=519066-1138862-1138051)
