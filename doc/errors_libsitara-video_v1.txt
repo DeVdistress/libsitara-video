@@ -1,0 +1,86 @@
+1. Иногда при закрытие программы и удалении svl::VideoCaptureWrapper возникает исключение
+
+ Строка запуска: 
+	videoencoding mode=single src=camera srcname=/dev/video1 codec=JPEG dest=rtp destname=192.168.3.10:49991 display=on deinterlace=off
+ Консольный вывод:
+	~~~SimpleEncoderTest() before delete _source
+	*** Error in `videoencoding': double free or corruption (out): 0xb1c00908 ***
+	Aborted (core dumped)
+
+ То же самое, но с другим тестом
+ videoencoding mode=multi count=1 src=camera codec=H264 dest=file destfile=/run/media/sda1/cam_%1_enc.avi display=capture deinterlace=on	
+	before delete _source
+	*** Error in `videoencoding': double free or corruption (fasttop): 0xb1100678 ***
+	Aborted (core dumped)
+
+
+
+2. Если передать svl::VideoDisplay в качестве аргумента svl::VideoCaptureWrapper то при запуске возникает исключение
+
+ Строка запуска: 
+	videoencoding mode=multi count=1 src=camera codec=H264 dest=file destfile=/run/media/sda1/cam_%1_enc.avi display=on deinterlace=off
+
+ Консольный вывод:
+	/dev/video1 streaming started...
+	terminate called after throwing an instance of 'std::system_error'
+  	what():  Resource temporarily unavailable
+	Aborted (core dumped)
+
+
+
+3. Если источником кадров является файл, то работает но не останавливается(похоже svl::VideoDisplay не подтверждает обработку последнего фрейма IFrameBuffer == nullptr)
+
+ Строка запуска: 
+	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x5 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
+
+ Консольный вывод:
+
+	Process 0x459a0 statistic [0..9] 99.599998% | [10..19] 0.400000% |  max, ms 13
+	^C-- catch SIGINT
+	MultiEncoderTest STOP
+	EncoderTest::stop()
+	../src/ivahd.cpp:475:	job	debug: ---!! need end encoder
+	../src/ivahd.cpp:518:	job	debug: Before Free
+	../src/encoderparameters.cpp:182:	free	debug: 
+	Deleting encoder codec...
+
+	../src/encoderparameters.cpp:208:	free	debug: 
+	FREE OK
+
+	../src/ivahd.cpp:533:	job	debug: After Free
+	thread of VideoDisplay was stoped 
+	^C-- catch SIGINT
+	MultiEncoderTest STOP
+	EncoderTest::stop()
+	^C-- catch SIGINT
+	MultiEncoderTest STOP
+	EncoderTest::stop()
+
+4. Простая обертка VideoEncLib::VideoDisplay над svl::VideoDisplay не работает: в теле потока внутри svl::VideoDisplay происходит исключение
+
+ Нужно заменить(раскоментировать) в EncoderTest svl::VideoDisplay на VideoEncLib::VideoDisplay в h-файле и cpp-файле
+ Строка запуска:
+	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x5 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
+
+ Консольный вывод:
+
+	../src/ivahd.cpp:463:	job	debug: INIT OK
+	CRTC_ID: 39
+	FB_ID: 58
+	CRTC_X: 0
+	CRTC_Y: 0
+	CRTC_W: 0
+	CRTC_H: 0
+	SRC_X: 16
+	SRC_Y: 16
+	SRC_W: 352
+	SRC_H: 280
+	src/svl/src/drm_visual.cpp:115: bool svl::DRMvisual::internalInitPlane(kms::Plane*, kms::Framebuffer*, const svl::Rectangle<unsigned int>&, const svl::Rectangle<unsigned int>&):
+	initial plane setup failed
+	Aborted (core dumped)
+
+	
+   
+	
+
+
