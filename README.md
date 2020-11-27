@@ -9,9 +9,9 @@ libdrm libdrm_omap libfmt libticmem libpthread libreadline libGAL
 
 - [Sample](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Examples_and_Demos/Application_Demos/Video_Graphics_Test.html)
 
-	+ (**src**) - https://git.ti.com/git/sitara-linux/video-graphics-test.git
+	+ (**src**) - https://git.ti.com/cgit/sitara-linux/video-graphics-test
 
-	+ (**src gc320 test**) - https://git.ti.com/git/graphics/ti-gc320-test.git
+	+ (**src gc320 test**) - https://git.ti.com/cgit/graphics/ti-gc320-test
 
 ## MAIN INFO ABOUT DSS
 - [DSS](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS.html?highlight=dss)
