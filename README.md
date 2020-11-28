@@ -19,6 +19,13 @@ basic work with video on am572x processors of TI sitara family
  ## MAIN INFO
 - [Processor SDK Linux](http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/index.html)
 
+## MAIN INFO ABOUT v4l2 capture video
+- [Capturing a webcam stream using v4l2](http://jwhsmith.net/2014/12/capturing-a-webcam-stream-using-v4l2/)
+
+- [Capture-v4l2](https://jayrambhia.com/blog/capture-v4l2)
+
+- [Doc about v4l2 from www.kernel.org](https://www.kernel.org/doc/html/v4.14/media/uapi/v4l/capture.c.html)
+
 ## MAIN INFO ABOUT KMS
 - [Kernel Mode Setting (KMS)](http://heim.ifi.uio.no/~knuto/kernel/4.14/gpu/drm-kms.html?highlight=kernel%20mode%20setting%20kms)
 
