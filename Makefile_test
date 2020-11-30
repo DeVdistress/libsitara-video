@@ -1,7 +1,7 @@
 EXECUTABLE  = libsitara-video
 
 SRCDIR        = src src/legacy/src src/svl/src src/utils/src src/kms++/src src/kms++/src/omap src/kms++util/src src/nix_console
-INCLUDEDIR    = $(SRCDIR) src/legacy/inc src/svl/inc src/utils/inc src/kms++/inc src/kms++util/inc src/videoenclib/inc
+INCLUDEDIR    = $(SRCDIR) src/legacy/inc src/svl/inc src/utils/inc src/kms++/inc src/kms++util/inc ext/VideoEncoding/VideoEncLib/inc
 INCLUDEDIR   +=/home/workspace/ti-processor-sdk-linux-am57xx-evm-05.02.00.10/linux-devkit/sysroots/armv7ahf-neon-linux-gnueabi/usr/include/omap 
 INCLUDEDIR   +=/home/workspace/ti-processor-sdk-linux-am57xx-evm-05.02.00.10/linux-devkit/sysroots/armv7ahf-neon-linux-gnueabi/usr/include/libdrm
 

@@ -73,6 +73,9 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="0.879637814.280191691" name="videoenclib.h" rcbsApplicability="disable" resourcePath="ext/VideoEncoding/VideoEncLib/inc/videoenclib.h" toolsToInvoke="org.eclipse.cdt.build.core.settings.holder.1382440019.335973454">
+						<tool id="org.eclipse.cdt.build.core.settings.holder.1382440019.335973454" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder.1382440019"/>
+					</fileInfo>
 					<sourceEntries>
 						<entry excluding="vip_common.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>

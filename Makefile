@@ -1,7 +1,7 @@
 EXECUTABLE  = libsitara-video.so
 
 SRCDIR        = src src/legacy/src src/svl/src src/utils/src src/kms++/src src/kms++/src/omap src/kms++util/src src/nix_console
-INCLUDEDIR    = $(SRCDIR) src/legacy/inc src/svl/inc src/utils/inc src/kms++/inc src/kms++util/inc src/videoenclib/inc
+INCLUDEDIR    = $(SRCDIR) src/legacy/inc src/svl/inc src/utils/inc src/kms++/inc src/kms++util/inc ext/VideoEncoding/VideoEncLib/inc
 INCLUDEDIR   += $(SDK_PATH_TARGET)/usr/include/omap 
 INCLUDEDIR   += $(SDK_PATH_TARGET)/usr/include/libdrm
 INCLUDEDIR   += $(SDK_PATH_TARGET)/usr/include/HAL2D

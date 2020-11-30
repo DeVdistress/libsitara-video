@@ -139,7 +139,7 @@ namespace svl
 		}
 #endif
 	}
-#if(1)
+#if(0)
 	int Gc320Obj::configureSurface(surf_context *surf_ctx,
 			uint32_t num_ctx, kms::OmapFramebuffer *bo, gceSURF_FORMAT surf_format)
 	{
