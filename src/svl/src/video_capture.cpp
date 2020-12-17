@@ -363,6 +363,8 @@ namespace svl
 
 	kms::OmapFramebuffer* VideoCapture::waitTheFrame()
 	{
+		MY_LOCKER_MUTEX
+
 		kms::OmapFramebuffer *ptr = nullptr;
 
 		while(need_start)

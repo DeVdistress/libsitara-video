@@ -12,14 +12,14 @@
 #include <mutex>
 #include <condition_variable>
 
-namespace svl
-{
- #ifndef MY_LOCKER_MUTEX
+#ifndef MY_LOCKER_MUTEX
  	#define MY_LOCKER_MUTEX         std::unique_lock<std::mutex> locker(g_lock);
 	#define MY_LOCKER_MUTEX_UNLOCK  locker.unlock();
 	#define MY_LOCKER_MUTEX_LOCK    locker.lock();
- #endif
+#endif
 
+namespace svl
+{
 template <class T>
  class SingletonPattern
  {

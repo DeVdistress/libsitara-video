@@ -9,6 +9,7 @@
 #include <string>
 #include <tuple>
 #include <atomic>
+#include <mutex>
 #include <kms++/kms++.h>
 #include <kms++util/kms++util.h>
 #include <kms++util/videodevice.h>
@@ -67,6 +68,8 @@ class VideoCapture: public VideoDevice
 
 		static constexpr int 			bar_speed 				{ 4							};
 		static constexpr int 			bar_width				{ 10						};
+
+		std::mutex               		g_lock;
 
 		// allocating special only for MMAP memory V4l2
 		kms::DmabufFramebuffer* GetDmabufFrameBuffer(int m_fd, kms::Card& card, uint32_t i,
