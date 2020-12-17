@@ -108,6 +108,7 @@ class VideoCapture: public VideoDevice
 								bool 						use_displayed_ 			= false,
 								kms::PixelFormat			pf_out_of_vpe_			= kms::PixelFormat::NV12
 							 );
+		virtual ~VideoCapture() = default;
 
 		svl::DRMvisual::OutWHDef getFrameSize() const { return frm_size_of_cam; }
 
@@ -118,7 +119,5 @@ class VideoCapture: public VideoDevice
 		kms::OmapFramebuffer* waitTheFrame();
 
 		void continueCapture();
-
-		virtual ~VideoCapture() = default;
 	};
 }

@@ -338,7 +338,9 @@ int main(int argc, char *argv[])
 #include <mutex>
 #include <condition_variable>
 #include <array>
+#include <functional>
 
+#include <signal.h>
 #include <pthread.h>
 
 #include "video_capture.h"
@@ -348,10 +350,39 @@ std::mutex    			g_lock;
 std::condition_variable g_check;
 std::atomic<bool> 		g_done{ false };
 
+// handler for event to signal SIGINT
+static void sigHandler(int signo)
+{
+  if (signo == SIGINT)
+  {
+	  std::cout << "-- catch SIGINT" << std::endl;
+
+	  std::cout << "-- catch SIGINT END" << std::endl;
+  }
+}
+
+int registerHandlerForSignal(void)
+{
+	struct sigaction sa;
+	sa.sa_handler = sigHandler;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
+
+	if (sigaction(SIGINT, &sa, NULL) == -1)
+	{
+		std::cout << "Did not catch  SIGINT" << std::endl;
+		return -1;
+	}
+
+	signal(SIGINT,sigHandler);
+	return 0;
+}
+
 void threadConsole(int &id, std::string& str_)
 {
 	int id_ = id;
 
+	::registerAllCommands();
 	::workWithConsole();
 
 	g_done = true;
@@ -420,6 +451,8 @@ void threadVideo(int &id, svl::VideoCaptureWrapper& cap)
 
 int main(int argc, char *argv[])
 {
+	registerHandlerForSignal();
+
 	svl::ListOfV4l2Dev::DataAboutV4l2DeV	lst_dev_v4l2(svl::VideoCapture::getListDev());
 
 #if(1)
@@ -431,7 +464,7 @@ int main(int argc, char *argv[])
 	svl::DRMvisual::getInstance().initOmap(my_px_fmt);
 	const svl::DRMvisual::ListOfPlanesDef 	lst_plane(svl::VideoCapture::getAvailablePlanesOfDrm());
 
-	std::array<svl::VideoCaptureWrapper*, 4> cap_mas { nullptr, nullptr, nullptr };
+	std::array<svl::VideoCaptureWrapper*, 4> cap_mas { nullptr, nullptr, nullptr, nullptr };
 
 #define TEST_VIDEO_COUNT  (1)
 
@@ -793,6 +826,8 @@ int main(int argc, char *argv[])
 #include <condition_variable>
 #include <array>
 #include <limits>
+
+#include <signal.h>
 #include <pthread.h>
 
 #include "libsitara-video.h"
@@ -804,6 +839,34 @@ std::atomic<bool> 		g_done{ false };
 
 std::array<svl::VideoCaptureWrapper*, 4>	cap_mas		{ nullptr, nullptr, nullptr, nullptr };
 std::array<svl::VideoDisplay*, 3>			disp_mas	{ nullptr, nullptr, nullptr};
+
+// handler for event to signal SIGINT
+static void sigHandler(int signo)
+{
+  if (signo == SIGINT)
+  {
+	  std::cout << "-- catch SIGINT" << std::endl;
+
+	  std::cout << "-- catch SIGINT END" << std::endl;
+  }
+}
+
+int registerHandlerForSignal(void)
+{
+	struct sigaction sa;
+	sa.sa_handler = sigHandler;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
+
+	if (sigaction(SIGINT, &sa, NULL) == -1)
+	{
+		std::cout << "Did not catch  SIGINT" << std::endl;
+		return -1;
+	}
+
+	signal(SIGINT,sigHandler);
+	return 0;
+}
 
 int getNumFromCmd(int max, int min, char *args)
 {
@@ -906,7 +969,6 @@ int cm_stop_disp(char *args)
 
 	printf("stop display %d\n", num_of_cap);
 }
-
 
 void threadConsole(const int id, std::string& str_, std::array<svl::VideoDisplay*, 3> &mas, std::array<svl::VideoCaptureWrapper*, 4> &cap)
 {

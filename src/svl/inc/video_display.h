@@ -43,7 +43,7 @@ namespace svl
 		void threadOfVideoDisplay(VideoEncLib::AbstractFrameSource *ptr);
 
 	public:
-		VideoDisplay(VideoEncLib::AbstractFrameSource* frame_source);
+		VideoDisplay(VideoEncLib::AbstractFrameSource* frame_source, int planeIndex = -1);
 
 		bool setViewDisplayRect(const VideoEncLib::Rectangle &rect);
 		VideoEncLib::Rectangle getViewDisplayRect();

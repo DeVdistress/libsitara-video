@@ -10,6 +10,7 @@
 #include <kms++/kms++.h>
 #include <array>
 #include <cstddef>
+#include <algorithm>
 
 namespace svl
 {
@@ -19,6 +20,7 @@ namespace svl
 			prime_fd(prime_fd_), size_(size__), map(map_){}
 
 		OmapBufferWrapper() = default;
+		virtual ~OmapBufferWrapper() = default;
 
 		int		dmaBuf() 	const noexcept	override final	{ return prime_fd;	}
 		size_t	size() 		const noexcept	override final	{ return size_;		}
@@ -35,6 +37,17 @@ namespace svl
 
 	public:
 		FromVideoEncLibIFrameBuffer_ToKmsFramebuffer(VideoEncLib::IFrameBuffer *ptr);
+		virtual ~FromVideoEncLibIFrameBuffer_ToKmsFramebuffer() = default;
+
+		FromVideoEncLibIFrameBuffer_ToKmsFramebuffer& operator=(const FromVideoEncLibIFrameBuffer_ToKmsFramebuffer& rhs)
+		{
+			if(this == &rhs)
+				return *this;
+			else
+				buf = rhs.buf;
+
+			return *this;
+		}
 
 		kms::PixelFormat format() 		const	override final	{ return kms::PixelFormat::NV12; }
 		unsigned num_planes() 			const	override final	{ return kms::get_pixel_format_info(kms::PixelFormat::NV12).num_planes;}
@@ -53,6 +66,20 @@ namespace svl
 	public:
 		FromKmsFramebuffer_ToVideoEncLibIFrameBuffer(kms::Framebuffer &buf);
 		FromKmsFramebuffer_ToVideoEncLibIFrameBuffer() = default;
+		virtual ~FromKmsFramebuffer_ToVideoEncLibIFrameBuffer() = default;
+
+		FromKmsFramebuffer_ToVideoEncLibIFrameBuffer& operator=(const FromKmsFramebuffer_ToVideoEncLibIFrameBuffer& rhs)
+		{
+			if(this == &rhs)
+				return *this;
+			else
+			{
+				buf = rhs.buf;
+				ptr_frame_buf = rhs.ptr_frame_buf;
+			}
+
+			return *this;
+		}
 
 		VideoEncLib::IOmapBuffer*	yBuff()		override final {
 			return dynamic_cast<VideoEncLib::IOmapBuffer*>(&buf[0]);

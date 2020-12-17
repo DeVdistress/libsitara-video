@@ -18,7 +18,7 @@
 					<folderInfo id="0.879637814." name="/" resourcePath="">
 						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.1554640698" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
 							<targetPlatform id="org.eclipse.cdt.build.core.prefbase.toolchain.1554640698.904071630" name=""/>
-							<builder arguments="-f Makefile -j8" autoBuildTarget="all" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="org.eclipse.cdt.build.core.settings.default.builder.1173186752" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
+							<builder arguments="-f Makefile_test -j8" autoBuildTarget="all" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="org.eclipse.cdt.build.core.settings.default.builder.1173186752" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.775669870" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1944865835" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
 								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1296934650" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
@@ -73,9 +73,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="0.879637814.280191691" name="videoenclib.h" rcbsApplicability="disable" resourcePath="ext/VideoEncoding/VideoEncLib/inc/videoenclib.h" toolsToInvoke="org.eclipse.cdt.build.core.settings.holder.1382440019.335973454">
-						<tool id="org.eclipse.cdt.build.core.settings.holder.1382440019.335973454" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder.1382440019"/>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="vip_common.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>

@@ -17,7 +17,7 @@ namespace svl
 	std::array<bool, 3>			VideoDisplay::flag_used_plan { false, false, false };
 	std::mutex 					VideoDisplay::g_lock;
 
-	VideoDisplay::VideoDisplay(VideoEncLib::AbstractFrameSource* frame_source)
+	VideoDisplay::VideoDisplay(VideoEncLib::AbstractFrameSource* frame_source, int planeIndex)
 	{
 		std::unique_lock<std::mutex> locker(g_lock);
 
@@ -58,22 +58,42 @@ namespace svl
 			}
 			else
 			{
-				bool was_succes_finded = false;
-				for(auto &wtf : flag_used_plan)
+				if(planeIndex < 0)
 				{
-					if(!wtf)
+					bool was_succes_finded = false;
+					for(auto &wtf : flag_used_plan)
 					{
-						ptr_cur_plane = lst_plane[tik];
-						flag_used_plan[tik] = true;
-						was_succes_finded = true;
-						cur_idx_in_mas_used_plan = tik;
-						break;
+						if(!wtf)
+						{
+							ptr_cur_plane = lst_plane[tik];
+							flag_used_plan[tik] = true;
+							was_succes_finded = true;
+							cur_idx_in_mas_used_plan = tik;
+							break;
+						}
+						++tik;
 					}
-					++tik;
-				}
 
-				if(!was_succes_finded)
-					throw std::runtime_error("error not free plane, all planes is used");
+					if(!was_succes_finded)
+						throw std::runtime_error("error not free plane, all planes is used");
+				}
+				else	//if set current number of planes
+				{
+					if(planeIndex < 3)
+					{
+						tik = planeIndex;
+						if(!flag_used_plan[tik])
+						{
+							ptr_cur_plane = lst_plane[tik];
+							flag_used_plan[tik] = true;
+							cur_idx_in_mas_used_plan = tik;
+						}
+						else
+							throw std::runtime_error(std::string("plane ") + std::to_string(planeIndex) + std::string(" is used"));
+					}
+					else
+						throw std::runtime_error("invalid plane index");
+				}
 			}
 				was_init = true;
 		}

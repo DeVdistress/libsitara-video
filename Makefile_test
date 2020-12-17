@@ -2,8 +2,9 @@ EXECUTABLE  = libsitara-video
 
 SRCDIR        = src src/legacy/src src/svl/src src/utils/src src/kms++/src src/kms++/src/omap src/kms++util/src src/nix_console
 INCLUDEDIR    = $(SRCDIR) src/legacy/inc src/svl/inc src/utils/inc src/kms++/inc src/kms++util/inc ext/VideoEncoding/VideoEncLib/inc
-INCLUDEDIR   +=/home/workspace/ti-processor-sdk-linux-am57xx-evm-05.02.00.10/linux-devkit/sysroots/armv7ahf-neon-linux-gnueabi/usr/include/omap 
-INCLUDEDIR   +=/home/workspace/ti-processor-sdk-linux-am57xx-evm-05.02.00.10/linux-devkit/sysroots/armv7ahf-neon-linux-gnueabi/usr/include/libdrm
+INCLUDEDIR   += $(SDK_PATH_TARGET)/usr/include/omap 
+INCLUDEDIR   += $(SDK_PATH_TARGET)/usr/include/libdrm
+INCLUDEDIR   += $(SDK_PATH_TARGET)/usr/include/HAL2D
 
 OBJDIR        = obj
 DEPDIR        = deps
@@ -16,7 +17,7 @@ MY_DEFINE	:=	-DUSE_TEST
 #MY_DEFINE	+=	-DUSE_DEBUG 
 
 LIBRARIES 	:=
-LIBRARIES 	+= -ldrm -ldrm_omap -lfmt -lticmem -lpthread -lreadline
+LIBRARIES 	+= -ldrm -ldrm_omap -lfmt -lticmem -lpthread -lreadline -lGAL
 #LIBRARIES 	+= -lkms++ -lkms++util 
 
 MAKE_DLL 	:=

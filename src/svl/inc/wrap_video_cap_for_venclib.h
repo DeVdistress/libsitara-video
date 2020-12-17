@@ -30,6 +30,7 @@ namespace svl
 										bool 						use_displayed_ 			= false,
 										kms::PixelFormat			pf_out_of_vpe_			= kms::PixelFormat::NV12
 									);
+		virtual ~VideoCaptureWrapper() = default;
 
 		int							frameWidth()				const noexcept	override final;
 		int							frameHeight()				const noexcept	override final;
