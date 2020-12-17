@@ -10,10 +10,11 @@
 #include <tuple>
 #include <atomic>
 #include <mutex>
+#include <vector>
 #include <kms++/kms++.h>
 #include <kms++util/kms++util.h>
 #include <kms++util/videodevice.h>
-#include <vector>
+
 #include <poll.h>
 
 #include "v4l2-sv.h"
