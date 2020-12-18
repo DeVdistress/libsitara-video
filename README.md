@@ -2,6 +2,8 @@
 basic work with video on am572x processors of TI sitara family
 
 ## dependence
+- [**TI SDK**](https://software-dl.ti.com/processor-sdk-linux/esd/AM57X/05_02_00_10/index_FDS.html)
+
 - **libdrm**
 
 - **libdrm_omap**
