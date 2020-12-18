@@ -142,6 +142,7 @@ namespace svl
 			{
 			  need_stop = false;
 			  was_start = false;
+			  ptr->endingProcessFrameNotify();
 			  break;
 			}
 
