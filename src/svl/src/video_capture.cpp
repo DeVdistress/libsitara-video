@@ -431,4 +431,30 @@ namespace svl
 		return new kms::DmabufFramebuffer(card, cam_in_width, cam_in_height, pixfmt,
 					  fds, pitches, offsets);
 	}
+
+#define TIME_WAIT_SUCC_COND	(50)
+	VideoCapture::~VideoCapture()
+	{
+		MY_LOCKER_MUTEX
+
+		if (was_capture_started)
+		{
+			stopCapture();
+			std::this_thread::sleep_for(std::chrono::milliseconds(TIME_WAIT_SUCC_COND));
+		}
+
+		bool one_shoot = true;
+		while(was_capture_started)
+		{
+			std::this_thread::sleep_for(std::chrono::milliseconds(TIME_WAIT_SUCC_COND));
+			if(one_shoot)
+			{
+				need_start = false;
+				need_stop  = false;
+				onceAfterStop();
+				one_shoot = false;
+			}
+		}
+	}
+#undef TIME_WAIT_SUCC_COND
 }
