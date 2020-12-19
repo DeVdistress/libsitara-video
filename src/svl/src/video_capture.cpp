@@ -432,7 +432,10 @@ namespace svl
 					  fds, pitches, offsets);
 	}
 
-#define TIME_WAIT_SUCC_COND	(50)
+#define TIME_WAIT_SUCC_COND			(50)
+#define SHORT_SLEEP_WITHOUT_MUTEX	MY_LOCKER_MUTEX_UNLOCK \
+					std::this_thread::sleep_for(std::chrono::milliseconds(TIME_WAIT_SUCC_COND)); \
+									MY_LOCKER_MUTEX_LOCK
 	VideoCapture::~VideoCapture()
 	{
 		MY_LOCKER_MUTEX
@@ -440,7 +443,7 @@ namespace svl
 		if (was_capture_started)
 		{
 			stopCapture();
-			std::this_thread::sleep_for(std::chrono::milliseconds(TIME_WAIT_SUCC_COND));
+			SHORT_SLEEP_WITHOUT_MUTEX
 		}
 
 		bool one_shoot = true;
@@ -453,8 +456,10 @@ namespace svl
 				need_stop  = false;
 				onceAfterStop();
 				one_shoot = false;
+				SHORT_SLEEP_WITHOUT_MUTEX
 			}
 		}
 	}
 #undef TIME_WAIT_SUCC_COND
+#undef SHORT_SLEEP_WITHOUT_MUTEX
 }
