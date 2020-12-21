@@ -31,7 +31,7 @@
 3. Если источником кадров является файл, то работает но не останавливается(похоже svl::VideoDisplay не подтверждает обработку последнего фрейма IFrameBuffer == nullptr)
 
  Строка запуска: 
-	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x5 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
+	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x1 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
 
  Консольный вывод:
 
@@ -60,7 +60,7 @@
 
  Нужно заменить(раскоментировать) в EncoderTest svl::VideoDisplay на VideoEncLib::VideoDisplay в h-файле и cpp-файле
  Строка запуска:
-	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x5 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
+	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x1 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
 
  Консольный вывод:
 
