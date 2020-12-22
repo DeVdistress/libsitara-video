@@ -1,14 +1,14 @@
 1. Иногда при закрытие программы и удалении svl::VideoCaptureWrapper возникает исключение
 
  Строка запуска: 
-	videoencoding mode=single src=camera srcname=/dev/video1 codec=JPEG dest=rtp destname=192.168.3.10:49991 display=on deinterlace=off
+	./videoencoding mode=single src=camera srcname=/dev/video1 codec=JPEG dest=rtp destname=192.168.3.10:49991 display=on deinterlace=off
  Консольный вывод:
 	~~~SimpleEncoderTest() before delete _source
 	*** Error in `videoencoding': double free or corruption (out): 0xb1c00908 ***
 	Aborted (core dumped)
 
  То же самое, но с другим тестом
- videoencoding mode=multi count=1 src=camera codec=H264 dest=file destfile=/run/media/sda1/cam_%1_enc.avi display=capture deinterlace=on	
+ ./videoencoding mode=multi count=1 src=camera codec=H264 dest=file destfile=/run/media/sda1/cam_%1_enc.avi display=capture deinterlace=on	
 	before delete _source
 	*** Error in `videoencoding': double free or corruption (fasttop): 0xb1100678 ***
 	Aborted (core dumped)
@@ -18,7 +18,7 @@
 2. Если передать svl::VideoDisplay в качестве аргумента svl::VideoCaptureWrapper то при запуске возникает исключение
 
  Строка запуска: 
-	videoencoding mode=multi count=1 src=camera codec=H264 dest=file destfile=/run/media/sda1/cam_%1_enc.avi display=on deinterlace=off
+	./videoencoding mode=multi count=1 src=camera codec=H264 dest=file destfile=/run/media/sda1/cam_%1_enc.avi display=on deinterlace=off
 
  Консольный вывод:
 	/dev/video1 streaming started...
@@ -31,7 +31,7 @@
 3. Если источником кадров является файл, то работает но не останавливается(похоже svl::VideoDisplay не подтверждает обработку последнего фрейма IFrameBuffer == nullptr)
 
  Строка запуска: 
-	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x1 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
+	./videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x1 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
 
  Консольный вывод:
 
@@ -60,7 +60,7 @@
 
  Нужно заменить(раскоментировать) в EncoderTest svl::VideoDisplay на VideoEncLib::VideoDisplay в h-файле и cpp-файле
  Строка запуска:
-	videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x1 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
+	./videoencoding mode=multi count=1 src=file srcfile=/run/media/sda1/video/video_nv12.raw:704x560x25x1 codec=H264 dest=file destfile=/run/media/sda1/from_file%1_enc.avi display=on
 
  Консольный вывод:
 
