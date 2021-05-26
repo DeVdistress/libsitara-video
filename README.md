@@ -1,5 +1,5 @@
 # libsitara-video
-basic work with video on am572x processors of TI sitara family
+basic work with video on am572x processors of TI sitara family based on (KMS++ https://github.com/tomba/kmsxx)
 
 ## dependence
 - [**TI SDK**](https://software-dl.ti.com/processor-sdk-linux/esd/AM57X/05_02_00_10/index_FDS.html)
